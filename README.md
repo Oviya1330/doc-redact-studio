@@ -1,4 +1,4 @@
-# Invoice Extraction Studio
+ # Invoice Extraction Studio
 
 A full-stack invoice processing tool that uploads PDFs to S3, runs Azure Document Intelligence (ADI) to extract structured fields, and uses an LLM to fill any gaps left by the ADI model. Results are presented in a split-view UI with live PDF field highlighting and PII redaction.
 
@@ -10,10 +10,9 @@ A full-stack invoice processing tool that uploads PDFs to S3, runs Azure Documen
 flowchart TD
     A[PDF on S3] --> B[Azure Document Intelligence\nprebuilt-invoice]
     B --> C{All required\nfields present?}
-    C -- yes --> E[Demote IBAN/SWIFT\nto PaymentDetails only]
+    C -- yes --> F[Cache result\nto S3 as data.json]
     C -- no --> D[LLM fallback\nFill missing fields from\nraw ADI JSON]
-    D --> E
-    E --> F[Cache result\nto S3 as data.json]
+    D --> F
     F --> G[Structured invoice JSON\nwith bounding boxes]
 ```
 

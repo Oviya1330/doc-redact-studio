@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base:    #0a0d14;
+  --bg-surface: #0c101a;
+  --bg-raised:  #0f1420;
+  --border:     #1a1f2e;
+  --border-mid: #1e2435;
+}
+
+html, body {
+  background: var(--bg-base);
+  color: #cbd5e1; /* slate-300 */
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ── Thin scrollbars ──────────────────────────────────────────── */
+.thin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #1e2a3a transparent;
+}
+.thin-scroll::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.thin-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: #1e2a3a;
+  border-radius: 9999px;
+}
+.thin-scroll::-webkit-scrollbar-thumb:hover {
+  background: #2d3f55;
+}
+
+/* ── Monospace amounts ────────────────────────────────────────── */
+.font-mono {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+/* ── Remove default <details> marker ─────────────────────────── */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
